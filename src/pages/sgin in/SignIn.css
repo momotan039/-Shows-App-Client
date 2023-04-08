@@ -25,13 +25,13 @@
   }
   
   .form {
-    margin-bottom: 16px;
+    margin: 16px 0;
   }
   
   .input {
     width: 100%;
     padding: 12px;
-    margin-bottom: 16px;
+    margin: 16px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
   }
@@ -63,7 +63,7 @@
   }
   
   .error {
-    margin-bottom: 16px;
+    margin: 16px 0;
     color: #f00;
     font-size: 14px;
     animation: bounce 0.5s infinite alternate;
