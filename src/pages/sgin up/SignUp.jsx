@@ -1,29 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './SignUp.css'; // Import CSS file for styling
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { signUp } from '../../redux/actions/authActions';
+import { hideLoader, showLoader } from '../../redux/actions/loaderActions';
+import './SignUp.css'; 
 
 const SignUp = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-
-  const handleSignUp = () => {
-    // Handle sign-up logic here, e.g. dispatching a Redux action
-    if (!email || !password || !confirmPassword) {
+  const {success,error:authErorr}=useSelector(state=>state.auth)
+  const dispatch=useDispatch()
+  const navigator=useNavigate()
+  const handleSignUp = async () => {
+    if (!name || !email || !password || !confirmPassword) {
       setError('Please fill in all fields');
     } else if (password !== confirmPassword) {
       setError('Passwords do not match');
     } else {
-      setError('');
-      console.log('Sign up with email:', email, 'and password:', password);
+      console.log('Sign up with name:', name, 'email:', email, 'and password:', password);
+      dispatch(showLoader())
+      await signUp({name,email,password},dispatch)
+      dispatch(hideLoader())
     }
   };
+
+useEffect(()=>{
+  setError(authErorr)
+},[authErorr])
+
+useEffect(()=>{
+  if(success)
+{
+  alert(success)
+  navigator('/')
+}
+},[success])
 
   return (
     <div className="content">
       <h1 className="title">Sign Up</h1>
       <form className="form">
+        <input
+          className="input"
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <input
           className="input"
           type="email"
