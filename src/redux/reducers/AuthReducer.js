@@ -1,6 +1,7 @@
 const initialState = {
     user: null,
-    error:null
+    error:null,
+    success:null
   };
 
 const authReducer=(state=initialState,action)=>{
@@ -14,7 +15,7 @@ const authReducer=(state=initialState,action)=>{
         case 'SIGN_UP':
             return{
                 ...state,
-                user:action.payload
+                success:action.payload
             }
             case 'ERORR':
                 return{
