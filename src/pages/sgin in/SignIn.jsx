@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SignIn.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn } from '../../redux/actions/AuthActions';
+import { signIn } from '../../redux/actions/authActions';
+import { hideLoader, showLoader } from '../../redux/actions/loaderActions';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
@@ -10,14 +11,16 @@ const SignIn = () => {
   const [error, setError] = useState('');
   const {user,error:authErorr}=useSelector(state=>state.auth)
   const dispatch=useDispatch()
-  const handleSignIn = () => {
-    // Handle sign-in logic here, e.g. dispatching a Redux action
+  useEffect(()=>{
+    setError(authErorr)
+  },[authErorr])
+  const handleSignIn = async () => {
     if (!email || !password) {
       setError('Please enter a valid email and password');
     } else {
-      setError('');
-      dispatch(signIn({email,password}))
-      console.log('Sign in with email:', email, 'and password:', password);
+      dispatch(showLoader())
+      await signIn({email,password},dispatch)
+      dispatch(hideLoader())
     }
   };
 
