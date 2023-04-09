@@ -1,4 +1,4 @@
-.headerContainer {
+header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,15 +6,33 @@
     background-color: #333;
     color: #fff;
   }
+  header.space{
+    justify-content: space-evenly !important;
+  }
   
-  .logoContainer {
+  header .logoContainer {
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .logoText {
+  header .logoText {
     font-size: 24px;
     font-weight: bold;
+  }
+
+  header .controls{
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  header .controls .menu ul{
+    display: flex;
+    gap: 8px;
+  }
+  header .controls .log-out{
+    text-align: center;
   }
   
