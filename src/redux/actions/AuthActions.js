@@ -1,4 +1,5 @@
 import { signIn as _signIn,signUp as _signUp } from "../../api/auth";
+import { saveUserToStorage } from "../../utils/localStorage";
 
 export const signIn = async (credentials, dispatch) => {
   const action = {
@@ -13,7 +14,8 @@ export const signIn = async (credentials, dispatch) => {
 
   await _signIn(credentials)
     .then((data) => {
-      action.payload = data;
+      saveUserToStorage(data.user)
+      action.payload = data.user;
       dispatch(action);
     })
     .catch((err) => {
@@ -26,7 +28,6 @@ export const signIn = async (credentials, dispatch) => {
 export const signUp = async (data,dispatch) => {
   try {
     const res= await _signUp(data)
-    debugger
     dispatch({
       type: "SIGN_UP",
       payload: res.message,
@@ -38,3 +39,10 @@ export const signUp = async (data,dispatch) => {
     })
   }
 };
+
+export const logout=(dispatch)=>{
+  localStorage.removeItem('user')
+  dispatch({
+    type: "LOGOUT"
+  })
+}
