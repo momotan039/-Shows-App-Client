@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { fetchUsers } from '../api/auth'
 
 function Home() {
+ 
   return (
     <div>Home</div>
   )
