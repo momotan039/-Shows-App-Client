@@ -17,6 +17,11 @@ const authReducer=(state=initialState,action)=>{
                 ...state,
                 success:action.payload
             }
+            case 'LOGOUT':
+            return{
+                ...state,
+                user:null
+            }
             case 'ERORR':
                 return{
                     ...state,
