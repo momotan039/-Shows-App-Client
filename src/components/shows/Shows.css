@@ -1,0 +1,21 @@
+.shows-container {
+  /* Styles for the shows container */
+  margin: 16px;
+}
+
+.shows-title {
+  /* Styles for the shows title */
+  font-size: 28px;
+  color: #ffbd4d; /* Update color to a glorious golden yellow */
+  margin-bottom: 16px;
+}
+
+.shows-grid {
+  /* Styles for the shows grid */
+  display: flex; /* Update to a flexbox layout */
+  flex-wrap: wrap; /* Wrap items to new row when space is not enough */
+  gap: 16px;
+  justify-content: center;
+}
+
+/* Add any other styles as needed for the rest of the component content */
