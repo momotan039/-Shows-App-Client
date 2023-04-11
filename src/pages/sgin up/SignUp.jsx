@@ -11,10 +11,12 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  const {success,error:authErorr}=useSelector(state=>state.auth)
+  const {success}=useSelector(state=>state.account)
+  const {error:authErorr}=useSelector(state=>state.app)
   const dispatch=useDispatch()
   const navigator=useNavigate()
   const handleSignUp = async () => {
+    dispatch(hideError())
     if (!name || !email || !password || !confirmPassword) {
       setError('Please fill in all fields');
     } else if (password !== confirmPassword) {

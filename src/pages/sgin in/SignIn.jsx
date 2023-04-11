@@ -4,17 +4,20 @@ import './SignIn.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signIn } from '../../redux/actions/authActions';
 import { hideLoader, showLoader } from '../../redux/actions/loaderActions';
+import { hideError } from '../../redux/actions/appAction';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const {user,error:authErorr}=useSelector(state=>state.auth)
+  const {user}=useSelector(state=>state.account)
+  const {error:authErorr}=useSelector(state=>state.app)
   const dispatch=useDispatch()
   useEffect(()=>{
     setError(authErorr)
   },[authErorr])
   const handleSignIn = async () => {
+    dispatch(hideError())
     if (!email || !password) {
       setError('Please enter a valid email and password');
     } else {
