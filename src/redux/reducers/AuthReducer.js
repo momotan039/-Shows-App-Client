@@ -22,11 +22,7 @@ const authReducer=(state=initialState,action)=>{
                 ...state,
                 user:null
             }
-            case 'ERORR':
-                return{
-                    ...state,
-                    error:action.payload
-                }
+           
         default:
             return state
     }
