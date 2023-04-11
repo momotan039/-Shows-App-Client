@@ -7,3 +7,25 @@ const res=await axios.get(API+'/api/v1/genres',{
 })
 return res.data
 }
+
+
+export const getFavortieShows=async ()=>{
+    const res=await axios.get(API+'/api/v1/shows/favorite',{
+        withCredentials:true
+    })
+    return res.data
+}
+
+export const getViewedShows=async ()=>{
+    const res=await axios.get(API+'/api/v1/shows/viewd',{
+        withCredentials:true
+    })
+    return res.data
+}
+
+export const getWatchLaterShows=async ()=>{
+    const res=await axios.get(API+'/api/v1/shows/watch-later',{
+        withCredentials:true
+    })
+    return res.data
+}
