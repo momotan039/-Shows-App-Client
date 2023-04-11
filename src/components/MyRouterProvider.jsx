@@ -5,13 +5,13 @@ import Root from "../pages/Root";
 import { useDispatch, useSelector } from "react-redux";
 import SignIn from "../pages/sgin in/SignIn";
 import SignUp from "../pages/sgin up/SignUp";
-import Dashboard from "../pages/Dashboard";
 import SetupProfile from "./setup profile/SetupProfile";
 import { getUserfromStorage } from "../utils/localStorage";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 export const MyRouterProvider = () => {
 
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.account);
   const dispatch = useDispatch();
   useEffect(() => {
     getUserfromStorage(dispatch);  
@@ -35,8 +35,13 @@ export const MyRouterProvider = () => {
             path: "/setup-profile",
             element:<SetupProfile/>
           },
+          {
+            path: "*",
+            element: <Home />,
+          }
         ],
       },
+      
     ]);
     const withOutUser = createBrowserRouter([
       {
@@ -51,8 +56,13 @@ export const MyRouterProvider = () => {
             path: "/sign-up",
             element: <SignUp />,
           },
+          {
+            path: "*",
+            element: <SignIn/>,
+          }
         ],
       },
+      
     ]);
     return user ? withUser : withOutUser;
   };
