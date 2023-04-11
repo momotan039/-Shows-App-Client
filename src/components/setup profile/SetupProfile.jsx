@@ -1,36 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAllGeneres } from "../../api/shows";
 import "./setupProfile.css";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
+import { setupAccount } from "../../api/account";
+import { editUserPreferences } from "../../redux/actions/accountActions";
 
 const animatedComponents = makeAnimated();
 const SetupProfile = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.account);
   const navigator = useNavigate();
+  const [error, setError] = useState('');
+
   useEffect(() => {
-    if (user.preferences) navigator("/");
-    else {
+    // if (user.preferences) navigator("/");
+    // else {
       getAllGeneres()
         .then((data) => {
           setAllGenres(data)
         })
         .catch((err) => alert(err.response.data.message));
-    }
+    // }
   }, []);
 
   const [lang, setLang] = useState("");
   const [showLang, setShowLang] = useState("");
   const [allGenres, setAllGenres] = useState([]);
   const [genres, setGenres] = useState([]);
-
-
-  const handleSubmit = (e) => {
+  const dispatch=useDispatch()
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(genres);
-    // Handle form submission
+    setError('')
+    if(genres.length===0||!lang||!showLang)
+    {
+      setError('Please fill in all fields');
+      return
+    }
+     dispatch(showLoader)
+     const action=await editUserPreferences({
+      "lang":lang,
+      "show_lang":showLang,
+      "genres":genres
+  })
+     dispatch(action)
+     dispatch(hideLoader())
   };
 
   return (
@@ -45,7 +61,8 @@ const SetupProfile = () => {
           >
             <option value="">Select Language</option>
             <option value="en">English</option>
-            <option value="es">Spanish</option>
+            <option value="ar">Arabic</option>
+            <option value="he">Hebrew</option>
           </select>
           <select
             className="input"
@@ -54,14 +71,15 @@ const SetupProfile = () => {
           >
             <option value="">Select Show Language</option>
             <option value="en">English</option>
-            <option value="es">Spanish</option>
+            <option value="ar">Arabic</option>
+            <option value="he">Hebrew</option>
           </select>
           <div className="genres">
             <Select
               placeholder='Select your genres'
               closeMenuOnSelect={false}
               components={animatedComponents}
-              onChange={(obj)=>setGenres(genres)}
+              onChange={(gns)=>{setGenres(gns)}}
               isMulti
               getOptionLabel={(o)=>o.name}
               getOptionValue={(o)=>o.id}
@@ -71,6 +89,7 @@ const SetupProfile = () => {
           <button type="submit" className="button">
             Submit
           </button>
+          {error && <div className="error">{error}</div>}
         </form>
       </div>
     </div>
