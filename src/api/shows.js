@@ -29,3 +29,10 @@ export const getWatchLaterShows=async ()=>{
     })
     return res.data
 }
+
+export const removeShowFromUserShows=async(id,listName)=>{
+    const res=await axios.delete(API+`/api/v1/shows/${listName}/${id}`,{
+        withCredentials:true
+    })
+    return res.data
+}

@@ -14,15 +14,20 @@ const SetupProfile = () => {
   const { user } = useSelector((state) => state.account);
   const navigator = useNavigate();
   const [error, setError] = useState('');
-
+  const _getAllGenres=async ()=>{
+    dispatch(showLoader())
+    try {
+      const data=await getAllGeneres()
+      setAllGenres(data)
+    } catch (error) {
+      alert(err.response.data.message)
+    }
+    dispatch(hideLoader())
+  }
   useEffect(() => {
     // if (user.preferences) navigator("/");
     // else {
-      getAllGeneres()
-        .then((data) => {
-          setAllGenres(data)
-        })
-        .catch((err) => alert(err.response.data.message));
+      _getAllGenres()
     // }
   }, []);
 

@@ -10,9 +10,9 @@ const Dashboard = () => {
   const { user } = useSelector((state) => state.account);
   const { email, name } = user;
   const { lang, show_lang, genres } = user.preferences;
-  const [favorite,setFavorite]=useState([])
-  const [viewed,setViewed]=useState([])
-  const [watchedLater,setWatchedLater]=useState([])
+  const [favorite,setFavorite]=useState(null)
+  const [viewed,setViewed]=useState(null)
+  const [watchedLater,setWatchedLater]=useState(null)
   const dispatch=useDispatch()
   const getShowsSections=async()=>{
     // dispatch(showLoader())
@@ -32,13 +32,9 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
     <UserInfoCard/>
-    {
-      favorite.length!==0?<>
-      <Shows shows={favorite} title='Favorite Shows'/>
-    <Shows shows={viewed} title='Viewed Shows'/>
-    <Shows shows={watchedLater} title='Watched later Shows'/>
-      </>:<ShowCard isSkelton={true}/>
-    }
+      <Shows  shows={favorite} apiRoute='favorite'  title='Favorite Shows'/>
+    <Shows shows={viewed} apiRoute='viewd' title='Viewed Shows'/>
+    <Shows shows={watchedLater} apiRoute='watch-later' title='Watched later Shows'/>
     </div>
   );
 };
