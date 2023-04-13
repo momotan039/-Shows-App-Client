@@ -5,7 +5,7 @@ import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 import ShowCard from "../show card/ShowCard";
 import "./Shows.css"; 
 
-const Shows = ({title,shows,apiRoute}) => {
+const Shows = ({title,shows,apiRoute,enableDelete}) => {
   const dispatch=useDispatch()
   const deleteShow=async (id)=>{
     debugger
@@ -29,10 +29,11 @@ const Shows = ({title,shows,apiRoute}) => {
       <div className="shows-grid">
         {shows.map((show) => (
           <ShowCard
-          deleteMe={()=>deleteShow(show._id)}
-            key={show._id}
-            name={show.title}
+           deleteMe={enableDelete?()=>deleteShow(show._id):null}
+            key={show._id||show.id}
+            name={show.title||show.name}
             vote={show.vote_average}
+            show={show}
             poster={`https://image.tmdb.org/t/p/w500/${show.poster_path}`}
           />
         ))}
