@@ -8,6 +8,29 @@ const res=await axios.get(API+'/api/v1/genres',{
 return res.data
 }
 
+export const getTrendingShows=async ()=>{
+    const res=await axios.get(API+'/api/v1/shows/trending',{
+        withCredentials:true
+    })
+    return res.data
+}
+
+export const getRecommendedShows=async (type,page)=>{
+    const res=await axios.get(API+`/api/v1/shows/${type}/recommended`,{
+        withCredentials:true,
+        params:{
+            page:page
+        }
+    })
+    return res.data
+}
+
+export const getSearchedShows=async(type,searchedFor)=>{
+    const res=await axios.get(API+`/api/v1/search/${type}/${searchedFor}`,{
+        withCredentials:true
+    })
+    return res.data
+}
 
 export const getFavortieShows=async ()=>{
     const res=await axios.get(API+'/api/v1/shows/favorite',{
