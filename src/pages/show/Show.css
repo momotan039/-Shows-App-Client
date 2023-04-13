@@ -1,0 +1,43 @@
+.show-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .poster-container {
+    grid-row: 1 / span 2;
+  }
+  
+  .poster {
+    width: 100%;
+    max-height: 463px;
+    border-radius: 5px;
+  }
+  
+  .details-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .info-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .info {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #777;
+  }
+  
