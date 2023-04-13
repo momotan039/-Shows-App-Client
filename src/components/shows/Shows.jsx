@@ -8,7 +8,7 @@ import "./Shows.css";
 const Shows = ({title,shows,apiRoute,enableDelete}) => {
   const dispatch=useDispatch()
   const deleteShow=async (id)=>{
-    debugger
+    
       dispatch(showLoader())
       try {
         const data= await removeShowFromUserShows(id,apiRoute)

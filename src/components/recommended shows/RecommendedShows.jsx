@@ -8,9 +8,10 @@ function RecommendedShows() {
   const [shows, setShows] = useState(null);
   const dispatch = useDispatch();
   const [pages, setPages] = useState(null);
-  const lastElementRef=useRef()
+  const [loading, setLoading] = useState(false);
   const _getRecommendedShows = async (page) => {
       setShows([])
+      setLoading(true)
    return new Promise(async (res,rej)=>{
     try {
         setTimeout(async () => {
@@ -23,6 +24,7 @@ function RecommendedShows() {
         alert(error.response.data.message);
         rej()
       }
+      setLoading(false)
    })
   };
   useEffect(() => {
@@ -35,6 +37,7 @@ function RecommendedShows() {
       {pages && (
         <Pagination
           _currentPage={pages.current}
+          isLoading={loading}
           totalPages={pages.total}
           onPageChange={(page) => {
             _getRecommendedShows(page)

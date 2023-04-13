@@ -1,7 +1,7 @@
 import "./Pagination.css";
 import { useState } from "react";
 const Pagination = ({ _currentPage, totalPages, onPageChange, isLoading,scrollTo }) => {
- debugger
+ 
     const [currentPage, setCurrentPage] = useState(_currentPage);
   const handlePrev = () => {
     if (currentPage > 1 && !isLoading) {
