@@ -1,8 +1,10 @@
 import { signIn as _signIn, signUp as _signUp } from "../../api/auth";
+import { getAllGeneres } from "../../api/shows";
 import { saveUserToStorage } from "../../utils/localStorage";
 import { setCurrentUser } from "./accountActions";
 import { showError } from "./appAction";
 import { hideLoader, showLoader } from "./loaderActions";
+import { setGenresShows } from "./showActions";
 
 export const signIn = async (credentials, dispatch) => {
   const action = {
@@ -17,6 +19,8 @@ export const signIn = async (credentials, dispatch) => {
       action.payload = data.user;
       dispatch(action);
       dispatch(setCurrentUser(data.user))
+      const genres=await getAllGeneres()
+      dispatch(setGenresShows(genres))
     })
     .catch((err) => {
       dispatch(showError(err));
