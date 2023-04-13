@@ -3,7 +3,7 @@ import "./Header.css"; // Import CSS file for styling
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineLogout } from "react-icons/ai";
-import { logout } from "../../redux/actions/AuthActions";
+import { logout } from "../../redux/actions/authActions";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -21,6 +21,7 @@ const Header = () => {
           <div className="controls">
             <nav className="menu">
               <ul>
+                <NavLink to="/">Home</NavLink>
                 <NavLink to="/dashborad">DashBoard</NavLink>
                 <NavLink to="/setup-profile">Setup-profile</NavLink>
               </ul>
