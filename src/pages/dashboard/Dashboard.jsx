@@ -32,9 +32,9 @@ const Dashboard = () => {
   return (
     <div className='dashboard'>
     <UserInfoCard/>
-      <Shows  shows={favorite} apiRoute='favorite'  title='Favorite Shows'/>
-    <Shows shows={viewed} apiRoute='viewd' title='Viewed Shows'/>
-    <Shows shows={watchedLater} apiRoute='watch-later' title='Watched later Shows'/>
+      <Shows enableDelete={true}  shows={favorite} apiRoute='favorite'  title='Favorite Shows'/>
+    <Shows enableDelete={true} shows={viewed} apiRoute='viewd' title='Viewed Shows'/>
+    <Shows enableDelete={true} shows={watchedLater} apiRoute='watch-later' title='Watched later Shows'/>
     </div>
   );
 };
