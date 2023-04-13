@@ -3,6 +3,7 @@ import authReducer from "./reducers/authReducer";
 import loaderReducer from "./reducers/loaderReducer";
 import  accountReducer  from "./reducers/accountReducer";
 import appReducer from "./reducers/appReducer";
+import showReducer from "./reducers/showReducer";
 
 
 // const store=createStore(authReducer)
@@ -14,7 +15,8 @@ const store = configureStore({
     auth: authReducer,
     loader:loaderReducer,
     account:accountReducer,
-    app:appReducer
+    app:appReducer,
+    show:showReducer
   },
 });
 
