@@ -11,8 +11,8 @@ export const getUserfromStorage=(dispatch)=>{
     if(user)
     {
         dispatch(setCurrentUser(user))
-        getAllGeneres().then(gns=>{
-            dispatch(setGenresShows(gns))
-        })
+        // getAllGeneres().then(gns=>{
+        //     dispatch(setGenresShows(gns))
+        // })
     }
 }
