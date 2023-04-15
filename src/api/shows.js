@@ -59,3 +59,11 @@ export const removeShowFromUserShows=async(id,listName)=>{
     })
     return res.data
 }
+
+
+export const appendShowToUserShows=async(show,listName)=>{
+    const res=await axios.post(API+`/api/v1/shows/${listName}`,show,{
+        withCredentials:true
+    })
+    return res.data
+}
