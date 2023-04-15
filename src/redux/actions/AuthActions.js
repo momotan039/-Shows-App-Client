@@ -19,8 +19,8 @@ export const signIn = async (credentials, dispatch) => {
       action.payload = data.user;
       dispatch(action);
       dispatch(setCurrentUser(data.user))
-      const genres=await getAllGeneres()
-      dispatch(setGenresShows(genres))
+      // const genres=await getAllGeneres()
+      // dispatch(setGenresShows(genres))
     })
     .catch((err) => {
       dispatch(showError(err));
