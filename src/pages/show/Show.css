@@ -1,43 +1,100 @@
 .show-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .poster-container {
-    grid-row: 1 / span 2;
-  }
-  
-  .poster {
-    width: 100%;
-    max-height: 463px;
-    border-radius: 5px;
-  }
-  
-  .details-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .info-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .info {
-    font-size: 16px;
-    margin-bottom: 5px;
-    color: #777;
-  }
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.poster-container {
+  grid-row: 1 / span 2;
+}
+
+.poster {
+  width: 100%;
+  max-height: 463px;
+  border-radius: 5px;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #777;
+}
+
+/* Buttons for Add to Favorite, Add to Watched Later, Add to Viewed */
+.show-container button {
+  margin-top: 10px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.show-container button:hover {
+  background-color: #0056b3;
+}
+
+.show-container button + button {
+  margin-left: 10px;
+}
+
+/* Icon styles for buttons */
+.show-container button svg {
+  margin-right: 5px;
+}
+
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.active {
+  background: #dc3545;
+}
+
+button svg {
+  margin-right: 5px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
