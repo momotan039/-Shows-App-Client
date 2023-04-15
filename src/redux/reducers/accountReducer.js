@@ -14,6 +14,16 @@ switch (action.type) {
             ...state,
             user:action.payload
         }
+    case 'ADD_FAVORITE_SHOW':
+        return {
+            ...state,
+            user:action.payload
+        }
+        case 'REMOVE_FAVORITE_SHOW':
+            return {
+                ...state,
+                user:action.payload
+            }
         default:
             return state
 }
