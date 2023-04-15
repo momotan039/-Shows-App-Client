@@ -29,7 +29,7 @@ const Shows = ({title,shows,apiRoute,enableDelete}) => {
       <div className="shows-grid">
         {shows.map((show) => (
           <ShowCard
-           deleteMe={enableDelete?()=>deleteShow(show._id):null}
+           deleteMe={enableDelete?()=>deleteShow(show.id):null}
             key={show._id||show.id}
             name={show.title||show.name}
             vote={show.vote_average}
