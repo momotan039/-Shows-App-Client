@@ -41,19 +41,6 @@ const SearchBar = () => {
     <div>
       <form onSubmit={handleSubmit} className="search-bar">
         <div className="search-input-container">
-          {/* <Select
-            components={animatedComponents}
-            isMulti
-            placeholder='Select Type Show'
-            className="select-option"
-            classNamePrefix="select-option"
-            options={[
-              { value:'movie',label: "movies" },
-              { value:'tv',label: "tv" },
-            ]}
-            value={selectedOption}
-            onChange={handleSelectChange}
-          /> */}
           <select
             className="input"
             onChange={handleSelectChange}
