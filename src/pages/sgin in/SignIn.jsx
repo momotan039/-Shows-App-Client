@@ -23,12 +23,15 @@ const SignIn = () => {
     } else {
       dispatch(showLoader())
       await signIn({email,password},dispatch)
+      setTimeout(() => {
       dispatch(hideLoader())
+      }, 1000);
     }
   };
 
   return (
-    <div className="content">
+    <div className="center">
+      <div className="content">
       <h1 className="title">Sign In</h1>
       <form className="form">
         <input
@@ -56,6 +59,7 @@ const SignIn = () => {
           Sign Up
         </Link>
       </div>
+    </div>
     </div>
   );
 };

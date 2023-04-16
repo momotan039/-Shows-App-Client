@@ -32,7 +32,8 @@ function RecommendedShows() {
   }, []);
 
   return (
-    <div className="recommended">
+    <div className="container">
+      <div className="recommended">
       <Shows title="Recommended Shows" shows={shows} />
       {pages && (
         <Pagination
@@ -45,6 +46,7 @@ function RecommendedShows() {
           scrollTo='.recommended'
         />
       )}
+    </div>
     </div>
   );
 }

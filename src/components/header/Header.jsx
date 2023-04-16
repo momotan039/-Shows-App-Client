@@ -10,7 +10,8 @@ const Header = () => {
   const navigator = useNavigate()
   const { user } = useSelector((state) => state.account);
   return (
-    <header className={`${user ? "space" : ""}`}>
+    <div className="container">
+      <header className={`${user ? "space" : ""}`}>
       <div className="logoContainer">
         <Link to="/">
           <h1 className="logoText">Shows App</h1>
@@ -34,6 +35,7 @@ const Header = () => {
         </>
       )}
     </header>
+    </div>
   );
 };
 

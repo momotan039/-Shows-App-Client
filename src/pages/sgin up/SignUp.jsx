@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import { hideError } from '../../redux/actions/appAction';
 import { signUp } from '../../redux/actions/authActions';
 import { hideLoader, showLoader } from '../../redux/actions/loaderActions';
 import './SignUp.css'; 
@@ -42,7 +43,8 @@ useEffect(()=>{
 },[success])
 
   return (
-    <div className="content">
+    <div className="center">
+      <div className="content">
       <h1 className="title">Sign Up</h1>
       <form className="form">
         <input
@@ -84,6 +86,7 @@ useEffect(()=>{
           Sign In
         </Link>
       </div>
+    </div>
     </div>
   );
 };
