@@ -8,6 +8,7 @@ import makeAnimated from "react-select/animated";
 import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 import { setupAccount } from "../../api/account";
 import { editUserPreferences } from "../../redux/actions/accountActions";
+import { saveUserToStorage } from "../../utils/localStorage";
 
 const animatedComponents = makeAnimated();
 const SetupProfile = () => {
@@ -25,12 +26,17 @@ const SetupProfile = () => {
     dispatch(hideLoader())
   }
   useEffect(() => {
-    // if (user.preferences) navigator("/");
-    // else {
+    if(user.preferences)
+    {
+      setLang(user.preferences.lang)
+    setShowLang(user.preferences.show_lang)
+    setGenres(user.preferences.genres)
+    }
       _getAllGenres()
-    // }
   }, []);
-
+useEffect(()=>{
+saveUserToStorage(user)
+},[user])
   const [lang, setLang] = useState("");
   const [showLang, setShowLang] = useState("");
   const [allGenres, setAllGenres] = useState([]);
@@ -44,18 +50,21 @@ const SetupProfile = () => {
       setError('Please fill in all fields');
       return
     }
-     dispatch(showLoader)
+     dispatch(showLoader())
      const action=await editUserPreferences({
       "lang":lang,
       "show_lang":showLang,
       "genres":genres
   })
-     dispatch(action)
-     dispatch(hideLoader())
+     setTimeout(() => {
+      dispatch(action)
+      dispatch(hideLoader())
+     }, 1000);
   };
 
   return (
-    <div className="setupAccountContainer">
+    <div className="center">
+      <div className="setupAccountContainer">
       <div className="content">
         <h1 className="title">Setup Profile</h1>
         <form className="form" onSubmit={handleSubmit}>
@@ -89,6 +98,7 @@ const SetupProfile = () => {
               getOptionLabel={(o)=>o.name}
               getOptionValue={(o)=>o.id}
               options={allGenres}
+              value={genres}
             />
           </div>
           <button type="submit" className="button">
@@ -97,6 +107,7 @@ const SetupProfile = () => {
           {error && <div className="error">{error}</div>}
         </form>
       </div>
+    </div>
     </div>
   );
 };
