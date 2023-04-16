@@ -24,11 +24,6 @@
   justify-content: space-between;
 }
 
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
 
 .info-container {
   display: flex;
@@ -51,7 +46,7 @@
   font-size: 18px;
   font-weight: bold;
   color: #fff;
-  background-color: #007bff;
+  background-color: var(--main-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -59,7 +54,7 @@
 }
 
 .show-container button:hover {
-  background-color: #0056b3;
+  background-color: var(--main-hover-color);
 }
 
 .show-container button + button {
@@ -71,30 +66,10 @@
   margin-right: 5px;
 }
 
-
-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: #007bff;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  margin-right: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button.active {
+.show-container button.active {
   background: #dc3545;
 }
 
-button svg {
-  margin-right: 5px;
-}
-
-button:hover {
+.show-container button:hover {
   opacity: 0.8;
 }
