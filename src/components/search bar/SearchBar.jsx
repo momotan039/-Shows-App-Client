@@ -5,6 +5,7 @@ import { FiSearch } from "react-icons/fi";
 import "./SearchBar.css";
 import { getSearchedShows } from "../../api/shows";
 import Shows from "../shows/Shows";
+import makeAnimated from "react-select/animated";
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,16 +17,16 @@ const SearchBar = () => {
     setSearchTerm(event.target.value);
   };
 
-  const handleSelectChange = (selectedOption) => {
-    setSelectedOption(selectedOption);
+  const handleSelectChange = (e) => {
+    setSelectedOption(e.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if(!searchTerm)
+    if(!searchTerm || !selectedOption)
         return
     try {
-      const data=await getSearchedShows(selectedOption.value,searchTerm)
+      const data=await getSearchedShows(selectedOption,searchTerm)
       setResults(data.results)
         setShowModal(true); // Show modal on form submit
     } catch (error) {
@@ -36,12 +37,13 @@ const SearchBar = () => {
   const handleCloseModal = () => {
     setShowModal(false); // Close modal
   };
-
   return (
     <div>
       <form onSubmit={handleSubmit} className="search-bar">
         <div className="search-input-container">
-          <Select
+          {/* <Select
+            components={animatedComponents}
+            isMulti
             placeholder='Select Type Show'
             className="select-option"
             classNamePrefix="select-option"
@@ -51,7 +53,16 @@ const SearchBar = () => {
             ]}
             value={selectedOption}
             onChange={handleSelectChange}
-          />
+          /> */}
+          <select
+            className="input"
+            onChange={handleSelectChange}
+          >
+            <option value="">Select Media Type</option>
+            <option value="movie">movies</option>
+            <option value="tv">tv</option>
+          </select>
+
           <input
             type="text"
             placeholder="Search..."
