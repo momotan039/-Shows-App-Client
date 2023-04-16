@@ -4,11 +4,10 @@ import { showError } from "./appAction";
 
 export const editUserPreferences = async (prefs) => {
   try {
-    const user = await setupAccount(prefs);
-    saveUserToStorage(user);
+    const preferences = await setupAccount(prefs);
     return {
       type: "Edit_User_Preferences",
-      payload: user,
+      payload: preferences,
     };
   } catch (error) {
     return showError(error)
@@ -23,22 +22,17 @@ export const setCurrentUser=(user)=>{
       };
 }
 
-export const addFavoriteShow=(show,user)=>{
-  // const favorites=Array.from(user.favorite)
-  // favorites.push(show)
-  const temp=Object.assign({},user)
-  temp.favorite.push(show)
+export const addFavoriteShow=(show)=>{
   return {
     type: "ADD_FAVORITE_SHOW",
-    payload: temp,
+    payload: show,
   };
 }
 
-export const removeFavoriteShow=(show,user)=>{
-  const favorites=user.favorite.filter(f=>f.id!==show.id)
+export const removeFavoriteShow=(show_id)=>{
   return {
     type: "REMOVE_FAVORITE_SHOW",
-    payload: favorites,
+    payload: show_id,
   };
 }
 
@@ -57,16 +51,16 @@ export const removeViewedShow=(show)=>{
 }
 
 
-export const addShowLaterShow=(show)=>{
+export const addWatchLaterShow=(show)=>{
   return {
-    type: "ADD_SHOW_LATER_SHOW",
+    type: "ADD_WATCH_LATER_SHOW",
     payload: show,
   };
 }
 
-export const removeShowLaterShow=(show)=>{
+export const removeWatchLaterShow=(show)=>{
   return {
-    type: "REMOVE_SHOW_LATER_SHOW",
+    type: "REMOVE_WATCH_LATER_SHOW",
     payload: show,
   };
 }
