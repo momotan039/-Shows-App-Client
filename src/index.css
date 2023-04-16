@@ -8,18 +8,113 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  --main-color:#ffbd4d;
+  --main-back:#242424;
+  --main-hover-color:#ffca28
+}
+.container{
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 10px;
+}
+.skelton{
+  background: #6a6a6a;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.skelton::before{
+  position: absolute;
+  content: '';
+  width: 20%;
+  height: 100%;
+  transform: rotate(29deg) scale(2.5);
+  background-color: rgb(120 120 120 / 66%);
+  left: -100%;
+  top: 0%;
+  animation: skelton 1s infinite;
+}
+
+
+@keyframes skelton{
+to{
+  left: 150%;
+}
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: var(--main-hover-color);
+  background-color: var(--main-back);
+  border-radius: 5px;
+  padding: 6px;
+  text-align: center;
+}
+.button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--main-color);
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--main-hover-color);
 }
 
 a {
   font-weight: 500;
-  color: #258bde;
+  color: var(--main-color);
   text-decoration: inherit;
 }
+
 a:hover {
-  color: #126d94;
+  color: var(--main-hover-color);
 }
 
+a.link {
+  color: var(--main-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
+a.link:hover {
+  color:var(--main-hover-color);
+}
+
+.content {
+  max-width: 360px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.center{
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form {
+  margin: 16px 0;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px ;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+/* 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -37,4 +132,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
