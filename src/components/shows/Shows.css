@@ -11,6 +11,11 @@
   font-size: 28px;
   color: #ffbd4d; /* Update color to a glorious golden yellow */
   margin-bottom: 16px;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 11px;
+  width: 100%;
+  box-shadow: -2px 12px 16px #ffc10759;
 }
 
 .shows-grid {
