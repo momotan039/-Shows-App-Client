@@ -5,7 +5,7 @@ import SearchBar from "../../components/search bar/SearchBar";
 function Tv() {
   return (
     <div className="tv">
-      <SearchBar />
+      <SearchBar mediaType='tv'/>
       <RecommendedShows mediaType='tv'/>
     </div>
   );
