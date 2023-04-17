@@ -23,7 +23,7 @@ function TrendingShows() {
   return (
     <div className="container">
       <div className="trending">
-        <Shows title="Trending Shows" shows={shows} />
+        <Shows title="Trending Shows" shows={shows} skeltons={4} />
       </div>
     </div>
   );
