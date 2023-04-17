@@ -1,0 +1,56 @@
+/* Switch container */
+.switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Switch */
+  .switch {
+    position: relative;
+    width: 100px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Switch button */
+  .switch button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  /* Text label */
+  .switch label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #777;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  /* Active state */
+  .switch.active {
+    background-color: #37c978;
+  }
+
+  .switch.active button {
+    transform: translateX(50px);
+  }
+
+  .switch.active label {
+    color: #fff;
+  }
