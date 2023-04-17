@@ -6,14 +6,14 @@ import Loader from "../components/loader/Loader";
 
 function Root() {
   return (
-    <>
+    <div className="root">
       <Header />
       <main>
         <Outlet />
       </main>
       <Footer />
       <Loader />
-    </>
+    </div>
   );
 }
 
