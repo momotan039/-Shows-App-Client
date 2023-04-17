@@ -10,3 +10,19 @@ export const hideError=()=>{
         type:'HIDE_ERROR'
     }
 }
+
+
+export const showScrollerApp=()=>{
+    document.body.style.overflow=''
+    return {
+        type:'SHOW_SCROLLER'
+    }
+}
+
+
+export const hideScrollerApp=()=>{
+    document.body.style.overflow='hidden'
+    return {
+        type:'HIDE_SCROLLER'
+    }
+}
