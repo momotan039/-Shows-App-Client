@@ -3,30 +3,33 @@ import { useDispatch } from "react-redux";
 import { getCasts } from "../../api/shows";
 import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 import "./Casts.css"; // Import the CSS file for styles
+import SkeltonCasts from "../skelton casts/SkeltonCasts";
 
 const Casts = ({ mdeiaType,showId }) => {
     const [casts,setCasts]=useState(null)
     const dispatch=useDispatch()
     const _getCasts=async()=>{
-        dispatch(showLoader())
-        try {
-            debugger
+        setTimeout(async () => {
+          try {
             const data=await getCasts(mdeiaType,showId)
             setCasts(data)
         } catch (error) {
-            debugger
             alert(error+'')
         }
-        dispatch(hideLoader())
+        }, 1500);
     }
     useEffect(()=>{
         _getCasts()
     },[])
   return (
     <div className="casts-container">
-      <h2 className="casts-title">Casts</h2>
-      <ul className="casts-list">
-        {casts&&casts.map(cast => (
+      <h2 className="shows-title">Casts</h2>
+      {
+        !casts&&<SkeltonCasts/>
+      }
+      {
+        casts&&<ul className="casts-list">
+        {casts.map(cast => (
           <li key={cast.id} className="cast-item">
             <div className="cast-img-container">
               {cast.profile_path ? (
@@ -42,13 +45,14 @@ const Casts = ({ mdeiaType,showId }) => {
             <div className="cast-details">
               <h3 className="cast-name">{cast.name}</h3>
               <p className="cast-background">
-                <strong>Background: </strong>
+                <strong>Job: </strong>
                 {cast.known_for_department}
               </p>
             </div>
           </li>
         ))}
       </ul>
+      }
     </div>
   );
 };
