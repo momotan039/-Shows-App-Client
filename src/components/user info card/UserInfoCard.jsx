@@ -2,13 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import "./UserInfoCard.css"; 
 
-function UserInfoCard() {
+function UserInfoCard({classs}) {
     const { user } = useSelector((state) => state.account);
     const { email, name } = user;
     const { lang, show_lang, genres } = user.preferences;
   return (
-    <div className="user-info-container">
-    <h2 className="user-info-title">Welcome to Your user-info</h2>
+    <div className={classs}>
+    <div className={`user-info-container`}>
+    <h2 className="user-info-title">Welcome to Your Dashboard</h2>
     <div className="user-info-item">
       <span className="user-info-label">Email:</span> {email}
     </div>
@@ -33,6 +34,7 @@ function UserInfoCard() {
     </div>
     <div className="user-info-footer">Enjoy Your Experience!</div>
   </div>
+    </div>
   )
 }
 
