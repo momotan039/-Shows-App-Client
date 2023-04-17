@@ -10,6 +10,7 @@ import { getUserfromStorage } from "../utils/localStorage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Show from "../pages/show/Show";
 import Tv from "../pages/tv/Tv";
+import NotFound from "../pages/404/NotFound";
 
 export const MyRouterProvider = () => {
 
@@ -46,8 +47,12 @@ export const MyRouterProvider = () => {
             element:<Show/>
           },
           {
+            path: "/404",
+            element:<Show/>
+          },
+          {
             path: "*",
-            element: <Home />,
+            element: <NotFound />,
           }
         ],
       },
@@ -68,7 +73,7 @@ export const MyRouterProvider = () => {
           },
           {
             path: "*",
-            element: <SignIn/>,
+            element: <NotFound/>,
           }
         ],
       },
