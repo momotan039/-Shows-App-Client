@@ -11,7 +11,7 @@ import ShowCard from "../show card/ShowCard";
 import SkeltonShows from "../skelton shows/SkeltonShows";
 import "./Shows.css";
 
-const Shows = ({ title, shows, apiRoute, enableDelete, setShows}) => {
+const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons}) => {
   const dispatch = useDispatch();
   const deleteShow = async (id) => {
     return new Promise(async (res, rej) => {
@@ -47,12 +47,13 @@ const Shows = ({ title, shows, apiRoute, enableDelete, setShows}) => {
   if (!shows)
     return (
       <div className="shows-container">
+        <h2 className="shows-title">{title}</h2>
         <div className="shows-grid">
-          <SkeltonShows />
+          <SkeltonShows num={skeltons}/>
         </div>
       </div>
     );
-  if (shows && shows.length > 0)
+  if (shows && shows.length>0)
     return (
       <div className="shows-container">
         <div className="shows-title-container">
