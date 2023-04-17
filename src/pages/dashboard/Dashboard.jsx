@@ -36,13 +36,14 @@ const Dashboard = () => {
   return (
       <div className="container">
         <div className="dashboard">
-        <UserInfoCard />
+        <UserInfoCard classs={favorite||viewed||watchedLater?'center':''}/>
         <Shows
           enableDelete={true}
           setShows={setFavorite}
           shows={favorite}
           apiRoute="favorite"
           title="Favorite Shows"
+          skeltons={4}
         />
         <Shows
           enableDelete={true}
@@ -50,6 +51,7 @@ const Dashboard = () => {
           shows={viewed}
           apiRoute="viewd"
           title="Viewed Shows"
+          skeltons={4}
         />
         <Shows
           enableDelete={true}
@@ -57,6 +59,7 @@ const Dashboard = () => {
           shows={watchedLater}
           apiRoute="watch-later"
           title="Watched later Shows"
+          skeltons={4}
         />
       </div>
       </div>
