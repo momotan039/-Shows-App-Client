@@ -57,9 +57,6 @@
   background-color: var(--main-hover-color);
 }
 
-.show-container button + button {
-  margin-left: 10px;
-}
 
 /* Icon styles for buttons */
 .show-container button svg {
