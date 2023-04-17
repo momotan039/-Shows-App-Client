@@ -23,6 +23,7 @@ const Header = () => {
             <nav className="menu">
               <ul>
                 <NavLink to="/">Home</NavLink>
+                <NavLink to="/tv">Tv</NavLink>
                 <NavLink to="/dashborad">DashBoard</NavLink>
                 <NavLink to="/setup-profile">Setup-profile</NavLink>
               </ul>
