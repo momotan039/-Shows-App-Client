@@ -17,11 +17,13 @@ import {
   setCurrentUser,
 } from "../../redux/actions/accountActions";
 import { saveUserToStorage } from "../../utils/localStorage";
+import Casts from "../../components/casts/Casts";
 
 function Show() {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const { show } = useSelector((state) => state.show);
+  debugger
   const { user } = useSelector((s) => s.account);
   useEffect(() => {
     debugger;
@@ -41,7 +43,7 @@ function Show() {
     nav("/dashboard");
     return;
   }
-  const { poster_path, title, vote_average, release_date, media_type } = show;
+  const { poster_path,overview,genres,first_air_date, vote_average, release_date, media_type } = show;
 
   const toggle = async (state = {}, listApi, rmListShow, addListShow) => {
     try {
@@ -84,7 +86,7 @@ function Show() {
   };
 
   return (
-    <div className="center">
+    <div className="container">
       <div className="show-container">
         <div className="poster-container">
           <img
@@ -94,11 +96,12 @@ function Show() {
           />
         </div>
         <div className="details-container">
-          <h1 className="title">{title}</h1>
+          <h1 className="title">{show.title||show.name}</h1>
           <div className="info-container">
             <p className="info">Vote Average: {vote_average}</p>
-            <p className="info">Release Date: {release_date}</p>
+            <p className="info">Release Date: {release_date||first_air_date}</p>
             <p className="info">Media Type: {media_type}</p>
+            <p className="info">Genres: {genres.map(genre => genre.name).join(", ")}</p>
             <button
               className={favorite ? "active" : ""}
               onClick={toggleFavorite}
@@ -144,9 +147,11 @@ function Show() {
                 </>
               )}
             </button>
+            <p className="info">Overview: {overview}</p>
           </div>
         </div>
       </div>
+      <Casts mdeiaType={media_type} showId={show.id}/>
     </div>
   );
 }
