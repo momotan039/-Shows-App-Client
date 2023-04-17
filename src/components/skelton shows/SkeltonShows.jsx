@@ -1,10 +1,10 @@
 import React from 'react'
 import './SkeltonShows.css'
-function SkeltonShows() {
+function SkeltonShows({num}) {
   return (
     <div className="shows-box">
       {
-        Array(3).fill(null).map(()=>{
+        Array(num?num:3).fill(null).map(()=>{
           return <div className="box">
             <div className="top skelton"></div>
             <div className="bottom">
