@@ -9,6 +9,7 @@ import SetupProfile from "./setup profile/SetupProfile";
 import { getUserfromStorage } from "../utils/localStorage";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Show from "../pages/show/Show";
+import Tv from "../pages/tv/Tv";
 
 export const MyRouterProvider = () => {
 
@@ -31,6 +32,10 @@ export const MyRouterProvider = () => {
           {
             path: "/dashborad",
             element: <Dashboard />,
+          },
+          {
+            path: "/tv",
+            element: <Tv />,
           },
           {
             path: "/setup-profile",
