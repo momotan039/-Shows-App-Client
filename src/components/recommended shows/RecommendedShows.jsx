@@ -15,7 +15,7 @@ function RecommendedShows() {
    return new Promise(async (res,rej)=>{
     try {
         setTimeout(async () => {
-        const data = await getRecommendedShows("movie", page);
+        const data = await getRecommendedShows(mediaType, page);
         setPages({ current: data.page, total: data.total_pages });
         setShows(data.results);
         res()
