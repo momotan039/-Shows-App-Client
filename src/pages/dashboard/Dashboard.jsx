@@ -23,7 +23,7 @@ const Dashboard = () => {
     const data1 = await getFavortieShows();
     const data2 = await getViewedShows();
     const data3 = await getWatchLaterShows();
-    setImmediate(()=>{
+    setTimeout(()=>{
       setFavorite(data1);
       setViewed(data2);
       setWatchedLater(data3);
