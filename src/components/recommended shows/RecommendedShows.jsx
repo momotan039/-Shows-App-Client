@@ -4,29 +4,26 @@ import { useDispatch } from "react-redux";
 import Shows from "../shows/Shows";
 import Pagination from "../pagination/Pagination";
 
-function RecommendedShows() {
+function RecommendedShows({mediaType}) {
   const [shows, setShows] = useState(null);
   const dispatch = useDispatch();
   const [pages, setPages] = useState(null);
   const [loading, setLoading] = useState(false);
-  const _getRecommendedShows = async (page) => {
-      setShows([])
+  const _getRecommendedShows = (page) => {
+      setShows(null)
       setLoading(true)
-   return new Promise(async (res,rej)=>{
     try {
         setTimeout(async () => {
         const data = await getRecommendedShows(mediaType, page);
         setPages({ current: data.page, total: data.total_pages });
         setShows(data.results);
-        res()
         }, 2000);
       } catch (error) {
         alert(error.response.data.message);
-        rej()
       }
       setLoading(false)
-   })
-  };
+   }
+
   useEffect(() => {
     _getRecommendedShows();
   }, []);
