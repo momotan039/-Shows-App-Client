@@ -9,7 +9,7 @@
     padding: 10px;
     margin: 0 5px;
     color: #ffbd4d;
-    background-color: #242424;
+    background-color: var(--main-back);
     border: none;
     outline: none;
     cursor: pointer;
@@ -21,7 +21,7 @@
   
   .pagination-button:hover {
     background-color: #ffbd4d;
-    color: #242424;
+    color: var(--main-back);
   }
   
   .pagination-button:disabled {

@@ -3,23 +3,31 @@
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 16px;
-  width: 300px;
+  padding: 3px;
+  width: 23%;
   position: relative;
+  height: 400px;
 }
-
+.showcard-container a{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .showcard-poster {
   width: 100%;
-  max-height: 300px;
+  /* max-height: 300px; */
+  height: 75%;
   border-radius: 4px;
 }
 
 .showcard-details {
   margin-top: 16px;
   text-align: center;
-  background: #242424;
+  background: var(--main-back);
   border-radius: 8px;
   padding: 10px;
+  flex: 1;
+  overflow: hidden;
 }
 
 .showcard-name {

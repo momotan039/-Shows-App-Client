@@ -12,6 +12,7 @@
     background: var(--main-color);
     width: 300px;
     height: 350px;
+    padding: 5px;
 }
 
 .shows-box .box .top{

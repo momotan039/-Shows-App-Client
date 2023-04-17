@@ -2,7 +2,10 @@
   /* Styles for the shows container */
   margin: 16px;
 }
-
+.shows-title-container{
+  display: flex;
+  justify-content: space-between;
+}
 .shows-title {
   /* Styles for the shows title */
   font-size: 28px;
