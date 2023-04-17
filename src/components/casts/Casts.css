@@ -1,0 +1,70 @@
+/* Casts Component Container */
+.casts-container {
+    margin-top: 24px;
+  }
+  
+  /* Casts Component Title */
+  .casts-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  /* Casts List */
+  .casts-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Cast List Item */
+  .cast-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  /* Cast Image Container */
+  .cast-img-container {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: #f3f3f3;
+  }
+  
+  /* Cast Image */
+  .cast-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Cast Image Placeholder */
+  .cast-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #aaa;
+  }
+  
+  /* Cast Details Container */
+  .cast-details {
+    margin-left: 16px;
+  }
+  
+  /* Cast Name */
+  .cast-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  /* Cast Background */
+  .cast-background {
+    font-size: 14px;
+    color: #666;
+  }
+  
