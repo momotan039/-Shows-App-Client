@@ -7,83 +7,34 @@ import {
   appendShowToUserShows,
   removeShowFromUserShows,
 } from "../../api/shows";
-import {
-  addFavoriteShow,
-  addViewedShow,
-  addWatchLaterShow,
-  removeFavoriteShow,
-  removeViewedShow,
-  removeWatchLaterShow,
-  setCurrentUser,
-} from "../../redux/actions/accountActions";
 import { saveUserToStorage } from "../../utils/localStorage";
 import Casts from "../../components/casts/Casts";
+import { findShowInUserShows, toggleViewed, toggleWatchLater,toggleFavorite} from "./helperShow";
 
 function Show() {
   const nav = useNavigate();
   const dispatch = useDispatch();
   const { show } = useSelector((state) => state.show);
-  debugger
   const { user } = useSelector((s) => s.account);
+  useEffect(()=>{
+    if(!show)
+    nav('/')
+  },[])
   useEffect(() => {
-    debugger;
     saveUserToStorage(user);
   }, [user]);
 
-  const findShowInUserShows = (list) => {
-    debugger;
-    return user[list].find((f) => f.id === show.id) ? true : false;
-  };
-  const [favorite, setFavorite] = useState(findShowInUserShows("favorite"));
+  const [favorite, setFavorite] = useState(findShowInUserShows(user,"favorite"));
   const [watchLater, setWatchLater] = useState(
-    findShowInUserShows("watchLater")
-  );
-  const [viewed, setViewed] = useState(findShowInUserShows("viewed"));
-  if (!show) {
-    nav("/dashboard");
-    return;
-  }
-  const { poster_path,overview,genres,first_air_date, vote_average, release_date, media_type } = show;
-
-  const toggle = async (state = {}, listApi, rmListShow, addListShow) => {
-    try {
-      if (state.value) {
-        await removeShowFromUserShows(show.id, listApi);
-        dispatch(rmListShow(show.id));
-      } else {
-        await appendShowToUserShows(show, listApi);
-        dispatch(addListShow(show));
-      }
-      state.set(!state.value);
-    } catch (error) {
-      console.log(error);
+    findShowInUserShows(user,"watchLater")
+    );
+    const [viewed, setViewed] = useState(findShowInUserShows(user,"viewed"));
+    if (!show) {
+      nav("/dashboard");
+      return;
     }
-  };
-  const toggleFavorite = async () => {
-    toggle(
-      { value: favorite, set: setFavorite },
-      "favorite",
-      removeFavoriteShow,
-      addFavoriteShow
-    );
-  };
-  const toggleWatchLater = async () => {
-    toggle(
-      { value: watchLater, set: setWatchLater },
-      "watch-later",
-      removeWatchLaterShow,
-      addWatchLaterShow
-    );
-  };
-
-  const toggleViewed = async () => {
-    toggle(
-      { value: viewed, set: setViewed },
-      "viewd",
-      removeViewedShow,
-      addViewedShow
-    );
-  };
+    const { poster_path,overview,genres,first_air_date, vote_average, release_date, media_type } = show;
+  
 
   return (
     <div className="container">
@@ -104,7 +55,7 @@ function Show() {
             <p className="info">Genres: {genres.map(genre => genre.name).join(", ")}</p>
             <button
               className={favorite ? "active" : ""}
-              onClick={toggleFavorite}
+              onClick={()=>toggleFavorite(favorite,setFavorite)}
             >
               {favorite ? (
                 <>
@@ -120,7 +71,7 @@ function Show() {
             </button>
             <button
               className={watchLater ? "active" : ""}
-              onClick={toggleWatchLater}
+              onClick={()=>toggleWatchLater(watchLater,setWatchLater)}
             >
               {watchLater ? (
                 <>
@@ -134,7 +85,7 @@ function Show() {
                 </>
               )}
             </button>
-            <button className={viewed ? "active" : ""} onClick={toggleViewed}>
+            <button className={viewed ? "active" : ""} onClick={()=>toggleViewed(viewed,setViewed)}>
               {viewed ? (
                 <>
                   <FaEye />
