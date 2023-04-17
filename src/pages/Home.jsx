@@ -9,7 +9,7 @@ function Home() {
     <div className="home">
       <SearchBar/>
       <TrendingShows/>
-      <RecommendedShows/>
+      <RecommendedShows mediaType='movie'/>
     </div>
   )
 }
