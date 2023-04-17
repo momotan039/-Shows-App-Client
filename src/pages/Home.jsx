@@ -7,7 +7,7 @@ import RecommendedShows from '../components/recommended shows/RecommendedShows'
 function Home() {
   return (
     <div className="home">
-      <SearchBar/>
+      <SearchBar mediaType='movie'/>
       <TrendingShows/>
       <RecommendedShows mediaType='movie'/>
     </div>
