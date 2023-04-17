@@ -7,11 +7,11 @@ import SkeltonShows from "../skelton shows/SkeltonShows";
 import { useDispatch } from "react-redux";
 import { hideScrollerApp, showScrollerApp } from "../../redux/actions/appAction";
 
-const SearchBar = () => {
+const SearchBar = ({mediaType}) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState(null);
   const [showModal, setShowModal] = useState(false); // Add state to control modal visibility
-  const [selectedOption, setSelectedOption] = useState(null); // Add state for selected option
+  const [selectedOption, setSelectedOption] = useState(mediaType); // Add state for selected option
   const dispatch=useDispatch()
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
@@ -47,7 +47,7 @@ const SearchBar = () => {
       <div>
         <form onSubmit={handleSubmit} className="search-bar">
           <div className="search-input-container">
-            <select className="input" onChange={handleSelectChange}>
+            <select  className="input" value={mediaType} onChange={handleSelectChange}>
               <option value="">Select Media Type</option>
               <option value="movie">movies</option>
               <option value="tv">tv</option>
@@ -79,7 +79,7 @@ const SearchBar = () => {
               </button>
               <div className="results">
                 {results ? (
-                  <Shows shows={results} title={selectedOption.label} />
+                  <Shows shows={results} title={`searching for : ${searchTerm}`}/>
                 ) : (
                   <SkeltonShows num={20} />
                 )}
