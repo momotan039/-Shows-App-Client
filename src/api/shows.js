@@ -70,7 +70,7 @@ export const appendShowToUserShows=async(show,listName)=>{
 
 
 export const getCasts=async(mediaType,id)=>{
-    const res=await axios.post(API+`/api/v1/casts/${mediaType}/${id}`,show,{
+    const res=await axios.get(API+`/api/v1/casts/${mediaType}/${id}`,{
         withCredentials:true
     })
     return res.data
