@@ -1,13 +1,12 @@
 import "./Pagination.css";
 import { useState } from "react";
-const Pagination = ({ _currentPage, totalPages, onPageChange, isLoading,scrollTo }) => {
+const Pagination = ({ _currentPage, totalPages, onPageChange, isLoading}) => {
  
     const [currentPage, setCurrentPage] = useState(_currentPage);
   const handlePrev = () => {
     if (currentPage > 1 && !isLoading) {
         setCurrentPage(currentPage-1)
       onPageChange(currentPage - 1);
-    scrollToParent()
     }
   };
 
@@ -15,14 +14,11 @@ const Pagination = ({ _currentPage, totalPages, onPageChange, isLoading,scrollTo
     if (currentPage < totalPages && !isLoading) {
         setCurrentPage(currentPage+1)
         onPageChange(currentPage +1);
-       scrollToParent()
     }
   };
 
-  function scrollToParent() {
-    const divElement = document.querySelector(scrollTo);
-    divElement.scrollIntoView();
-  }
+ 
+  if(totalPages)
   return (
     <div className="pagination-container">
       <button
