@@ -62,7 +62,7 @@ const clearClassAnimation=()=>{
     <div className="container">
         <form onSubmit={()=>handleSubmit(1)} className="search-bar">
           <div className="search-input-container">
-            <select  className="input" value={mediaType} onChange={handleSelectChange}>
+            <select  className="input" defaultValue={mediaType} onChange={handleSelectChange}>
               <option value="">Select Media Type</option>
               <option value="movie">movies</option>
               <option value="tv">tv</option>
@@ -85,7 +85,7 @@ const clearClassAnimation=()=>{
             <FiSearch />
           </button>
         </form>
-        {/* Render modal overlay with search results */}
+
         {showModal && (
           <div className="modal">
             <div className="modal-content">
