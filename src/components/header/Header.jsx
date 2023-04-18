@@ -23,15 +23,15 @@ const Header = () => {
           <div className={`controls ${openSmallMenu?'small-menu':''}`}>
             <nav className="menu">
               <ul>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/tv">Tv</NavLink>
-                <NavLink to="/dashborad">DashBoard</NavLink>
-                <NavLink to="/setup-profile">Setup-profile</NavLink>
+                <NavLink onClick={()=>setOpenSmallMenu(false)} to="/">Home</NavLink>
+                <NavLink onClick={()=>setOpenSmallMenu(false)} to="/tv">Tv</NavLink>
+                <NavLink onClick={()=>setOpenSmallMenu(false)} to="/dashborad">DashBoard</NavLink>
+                <NavLink onClick={()=>setOpenSmallMenu(false)} to="/setup-profile">Setup profile</NavLink>
               </ul>
             </nav>
             <div className="log-out">
               {/* <h3>hello {user.name.split(" ")[0]}</h3> */}
-              <AiOutlineLogout onClick={async () => await logout(dispatch,navigator)} size={30} />
+              <AiOutlineLogout onClick={async () =>{setOpenSmallMenu(false);await logout(dispatch,navigator)}} size={30} />
             </div>
           </div>
           <div className="menu-bar">
