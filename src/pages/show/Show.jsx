@@ -16,10 +16,12 @@ function Show() {
   const dispatch = useDispatch();
   const { show } = useSelector((state) => state.show);
   const { user } = useSelector((s) => s.account);
+
   useEffect(()=>{
     if(!show)
     nav('/')
   },[])
+
   useEffect(() => {
     saveUserToStorage(user);
   }, [user]);
@@ -38,6 +40,7 @@ function Show() {
 
   return (
     <div className="container">
+      <div className="scale-up">
       <div className="show-container">
         <div className="poster-container">
           <img
@@ -98,9 +101,10 @@ function Show() {
                 </>
               )}
             </button>
-            <p className="info">Overview: {overview}</p>
+            <p className="info">story: {overview}</p>
           </div>
         </div>
+      </div>
       </div>
       <Casts mdeiaType={media_type} showId={show.id}/>
     </div>
