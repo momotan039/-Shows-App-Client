@@ -3,21 +3,24 @@ import { getRecommendedShows } from "../../api/shows";
 import { useDispatch } from "react-redux";
 import Shows from "../shows/Shows";
 import Pagination from "../pagination/Pagination";
+import usePagination from "../../hooks/usePagination";
+import { scrollToTop } from "../../redux/actions/appAction";
 
 function RecommendedShows({mediaType}) {
   const [shows, setShows] = useState(null);
   const dispatch = useDispatch();
-  const [pages, setPages] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [pages,setPages,loading,setLoading]=usePagination()
   const _getRecommendedShows = (page) => {
       setShows(null)
       setLoading(true)
+      if(pages)
+      dispatch(scrollToTop('.recommended'))
     try {
         setTimeout(async () => {
         const data = await getRecommendedShows(mediaType, page);
         setPages({ current: data.page, total: data.total_pages });
         setShows(data.results);
-        }, 2000);
+        }, 1000);
       } catch (error) {
         alert(error.response.data.message);
       }
@@ -31,7 +34,7 @@ function RecommendedShows({mediaType}) {
   return (
     <div className="container">
       <div className="recommended">
-      <Shows title="Recommended Shows" shows={shows} />
+      <Shows showNotFound={true} title="Recommended Shows" shows={shows} />
       {pages && (
         <Pagination
           _currentPage={pages.current}
@@ -40,7 +43,6 @@ function RecommendedShows({mediaType}) {
           onPageChange={(page) => {
             _getRecommendedShows(page)
           }}
-          scrollTo='.recommended'
         />
       )}
     </div>
