@@ -7,11 +7,12 @@ import {
   removeWatchLaterShow,
 } from "../../redux/actions/accountActions";
 import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
+import EmptyResults from "../empty results/EmptyResults";
 import ShowCard from "../show card/ShowCard";
 import SkeltonShows from "../skelton shows/SkeltonShows";
 import "./Shows.css";
 
-const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons}) => {
+const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons,showNotFound}) => {
   const dispatch = useDispatch();
   const deleteShow = async (id) => {
     return new Promise(async (res, rej) => {
@@ -19,7 +20,6 @@ const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons}) => {
         dispatch(showLoader());
         const data = await removeShowFromUserShows(id, apiRoute);
         alert(data.message);
-        setTimeout(() => {
           setShows((shs) => shs.filter((f) => f.id !== id));
           switch (apiRoute) {
             case "favorite":
@@ -37,7 +37,6 @@ const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons}) => {
           }
           dispatch(hideLoader());
           res();
-        }, 1000);
       } catch (error) {
         console.log(error.response.data.message);
         rej();
@@ -53,6 +52,10 @@ const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons}) => {
         </div>
       </div>
     );
+    if (showNotFound&&shows && shows.length===0)
+    return (<>
+      <EmptyResults/>
+    </>)
   if (shows && shows.length>0)
     return (
       <div className="shows-container">
