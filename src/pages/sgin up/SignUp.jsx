@@ -23,10 +23,16 @@ const SignUp = () => {
     } else if (password !== confirmPassword) {
       setError('Passwords do not match');
     } else {
-      console.log('Sign up with name:', name, 'email:', email, 'and password:', password);
       dispatch(showLoader())
-      await signUp({name,email,password},dispatch)
-      dispatch(hideLoader())
+      try {
+        setTimeout(async() => {
+          await signUp({name,email,password},dispatch)
+          navigator('/')
+          dispatch(hideLoader())
+          }, 1500);
+      } catch (error) {
+        alert(error+'')
+      }
     }
   };
 
