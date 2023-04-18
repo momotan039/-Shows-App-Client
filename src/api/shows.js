@@ -8,8 +8,8 @@ const res=await axios.get(API+'/api/v1/genres',{
 return res.data
 }
 
-export const getTrendingShows=async ()=>{
-    const res=await axios.get(API+'/api/v1/shows/trending',{
+export const getTrendingShows=async (mediaType)=>{
+    const res=await axios.get(API+'/api/v1/shows/trending/'+mediaType,{
         withCredentials:true
     })
     return res.data
