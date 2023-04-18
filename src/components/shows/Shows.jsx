@@ -19,7 +19,6 @@ const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons,showNot
       try {
         dispatch(showLoader());
         const data = await removeShowFromUserShows(id, apiRoute);
-        alert(data.message);
           setShows((shs) => shs.filter((f) => f.id !== id));
           switch (apiRoute) {
             case "favorite":
