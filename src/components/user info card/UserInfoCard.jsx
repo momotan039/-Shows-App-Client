@@ -9,6 +9,7 @@ const UserInfoCard = ({ classs }) => {
   
   return (
     <div className={classs}>
+      <div>
       <h2 className="title">Welcome to Your Dashboard</h2>
       <div className="user-info-container">
         <div className="user-info-avatar">
@@ -35,6 +36,7 @@ const UserInfoCard = ({ classs }) => {
           </div>
           <div className="user-info-footer">Enjoy Your Experience!</div>
         </div>
+      </div>
       </div>
     </div>
   );
