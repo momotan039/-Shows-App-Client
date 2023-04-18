@@ -5,8 +5,11 @@ function Loader() {
     const {isPlaying}=useSelector(state=>state.loader)
     if(isPlaying)
   return (
+    // <div className="container-loader">
+    //     <div className='loader'>Loading...</div>
+    // </div>
     <div className="container-loader">
-        <div className='loader'>Loading...</div>
+      <img src="/images/loader.gif"/>
     </div>
   )
 }
