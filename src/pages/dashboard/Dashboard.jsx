@@ -11,13 +11,9 @@ import UserInfoCard from "../../components/user info card/UserInfoCard";
 import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 
 const Dashboard = () => {
-  const { user } = useSelector((state) => state.account);
-  const { email, name } = user;
-  const { lang, show_lang, genres } = user.preferences;
   const [favorite, setFavorite] = useState(null);
   const [viewed, setViewed] = useState(null);
   const [watchedLater, setWatchedLater] = useState(null);
-  const dispatch = useDispatch();
   const getShowsSections = async () => {
     // dispatch(showLoader())
     const data1 = await getFavortieShows();
@@ -33,10 +29,17 @@ const Dashboard = () => {
   useEffect(() => {
     getShowsSections();
   }, []);
+  const getUesrInfoCard=()=>{
+    if(favorite && favorite.length===0
+      &&viewed && viewed.length===0
+      &&watchedLater && watchedLater.length===0)
+    return 'center'
+  }
   return (
-      <div className="container">
+      <div className="scale-up">
+        <div className="container">
         <div className="dashboard">
-        <UserInfoCard classs={favorite||viewed||watchedLater?'center':''}/>
+        <UserInfoCard classs={getUesrInfoCard()}/>
         <Shows
           enableDelete={true}
           setShows={setFavorite}
@@ -61,6 +64,7 @@ const Dashboard = () => {
           title="Watched later Shows"
           skeltons={4}
         />
+      </div>
       </div>
       </div>
   );
