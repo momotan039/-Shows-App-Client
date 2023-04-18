@@ -23,7 +23,7 @@ const Dashboard = () => {
       setFavorite(data1);
       setViewed(data2);
       setWatchedLater(data3);
-    },2000)
+    },1000)
     // dispatch(hideLoader())
   };
   useEffect(() => {
