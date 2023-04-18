@@ -4,7 +4,7 @@ import "./ShowCard.css"; // Import the CSS file for the component
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { selectShow } from "../../redux/actions/showActions";
-import { showScrollerApp } from "../../redux/actions/appAction";
+import { scrollToTop, showScrollerApp } from "../../redux/actions/appAction";
 
 const ShowCard = ({ show, name, vote, poster, isSkelton = false, deleteMe }) => {
   const dispatch = useDispatch();
@@ -14,6 +14,7 @@ const ShowCard = ({ show, name, vote, poster, isSkelton = false, deleteMe }) => 
   const onClickShow=()=>{
     dispatch(selectShow(show))
     dispatch(showScrollerApp())
+    dispatch(scrollToTop())
   }
 
   return (
