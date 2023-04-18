@@ -3,7 +3,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+    transition: all .1s ease;
+  }
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: rgba(255, 255, 255, 0.87);
@@ -114,22 +115,48 @@ a.link:hover {
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-/* 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+
+.slide-right{
+  transform: translateX(-100%) scale(0);
+  animation: SlideRight .8s forwards cubic-bezier(0.08, 1, 1, 0.74)
 }
-button:hover {
-  border-color: #646cff;
+
+@keyframes SlideRight {
+  to{
+    transform: translateX(0) scale(1);
+  }
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
+
+.slide-left{
+  transform: translateX(100%) scale(0);
+  animation: SlideLeft .8s forwards cubic-bezier(0.08, 1, 1, 0.74)
+}
+
+@keyframes SlideLeft {
+  to{
+    transform: translateX(0) scale(1);
+  }
+}
+
+.slide-down{
+  transform: translateY(-100%) scale(0);
+  animation: SlideDown .8s forwards cubic-bezier(0.08, 1, 1, 0.74)
+}
+
+@keyframes SlideDown {
+  to{
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+.scale-up{
+  transform:scale(0);
+  animation: ScaleUp .8s forwards cubic-bezier(0.08, 1, 1, 0.74)
+}
+
+@keyframes ScaleUp {
+  to{
+    transform:scale(1);
+  }
+}
