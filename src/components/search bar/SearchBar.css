@@ -43,19 +43,20 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
     align-items: center;
     justify-content: center;
+    overflow: auto;
   }
   
   .modal-content {
     width: 100%;
-    height: 100%;
     padding: 20px;
     border-radius: 5px;
-    overflow: auto;
   }
   
+  .modal .pagination{
+    background: var(--main-back);
+  }
   .close-button {
     position: absolute;
     top: 6px;
