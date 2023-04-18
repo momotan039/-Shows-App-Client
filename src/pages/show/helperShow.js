@@ -4,7 +4,7 @@ import store from "../../redux/store";
 
 export const findShowInUserShows = (user,list) => {
     const {show}=store.getState().show
-    return user[list].find((f) => f.id === show.id) ? true : false;
+    return user[list].find((f) => f.id === show?.id) ? true : false;
   };
 
  const toggle = async (state = {}, listApi, rmListShow, addListShow) => {
