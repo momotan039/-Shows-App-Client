@@ -25,9 +25,12 @@ export const getRecommendedShows=async (type,page)=>{
     return res.data
 }
 
-export const getSearchedShows=async(type,searchedFor)=>{
+export const getSearchedShows=async(type,searchedFor,_page)=>{
     const res=await axios.get(API+`/api/v1/search/${type}/${searchedFor}`,{
-        withCredentials:true
+        withCredentials:true,
+        params:{
+            page:_page
+        }
     })
     return res.data
 }
