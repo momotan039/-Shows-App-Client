@@ -28,7 +28,6 @@ const SetupProfile = () => {
   useEffect(() => {
     if(user.preferences)
     {
-      setLang(user.preferences.lang)
     setShowLang(user.preferences.show_lang)
     setGenres(user.preferences.genres)
     }
@@ -37,7 +36,6 @@ const SetupProfile = () => {
 useEffect(()=>{
 saveUserToStorage(user)
 },[user])
-  const [lang, setLang] = useState("");
   const [showLang, setShowLang] = useState("");
   const [allGenres, setAllGenres] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -45,14 +43,14 @@ saveUserToStorage(user)
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('')
-    if(genres.length===0||!lang||!showLang)
+    if(genres.length===0||!showLang)
     {
       setError('Please fill in all fields');
       return
     }
      dispatch(showLoader())
      const action=await editUserPreferences({
-      "lang":lang,
+      "lang":'en',
       "show_lang":showLang,
       "genres":genres
   })
@@ -68,16 +66,6 @@ saveUserToStorage(user)
       <div className="content">
         <h1 className="title">Setup Profile</h1>
         <form className="form" onSubmit={handleSubmit}>
-          <select
-            className="input"
-            value={lang}
-            onChange={(e) => setLang(e.target.value)}
-          >
-            <option value="">Select Language</option>
-            <option value="en">English</option>
-            <option value="ar">Arabic</option>
-            <option value="he">Hebrew</option>
-          </select>
           <select
             className="input"
             value={showLang}
