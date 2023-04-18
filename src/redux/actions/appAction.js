@@ -26,3 +26,24 @@ export const hideScrollerApp=()=>{
         type:'HIDE_SCROLLER'
     }
 }
+
+export const scrollToTop=(classElem)=>{
+    let elem;
+    if(classElem)
+   {
+       elem=document.querySelector(classElem)
+       if(elem)
+    elem.scrollIntoView({ behavior: 'smooth' })
+   }
+    else
+    {
+        elem=window
+        elem.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+      });
+    }
+      return {
+        type:'SCROLLING_TO_TOP'
+      }
+}
