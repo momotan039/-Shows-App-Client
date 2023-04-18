@@ -1,38 +1,71 @@
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-    background-color: #333;
-    color: #fff;
-  }
-  header.space{
-    justify-content: space-evenly !important;
-  }
-  
-  header .logoContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  header .logoText {
-    font-size: 24px;
-    font-weight: bold;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  background-color: #333;
+  color: #fff;
+}
+header.space{
+  justify-content: space-evenly !important;
+}
 
+header .logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header .logoText {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+header .controls{
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+}
+header .controls.small-menu{
+  position: fixed;
+  top: 0;
+  left: -100%;
+  display: flex !important;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  background: linear-gradient(0, black, #000000d4);
+  animation: go-to-right .7s forwards cubic-bezier(1, -0.06, 0.26, 0.61);
+}
+@keyframes go-to-right {
+  to{
+    left: 0%;
+  }
+}
+
+header .controls .menu ul{
+  display: flex;
+  gap: 8px;
+}
+header .controls .log-out{
+  text-align: center;
+}
+header .menu-bar{
+  display: none;
+}
+header .menu-bar .close-menu{
+position: fixed;
+top: 0;
+right: 10px;
+z-index: 999;
+}
+@media (max-width:768px) {
   header .controls{
-    display: flex;
-    gap: 7px;
-    align-items: center;
-    justify-content: center;
+    display: none !important;
   }
-
-  header .controls .menu ul{
-    display: flex;
-    gap: 8px;
-  }
-  header .controls .log-out{
-    text-align: center;
-  }
-  
+  header .menu-bar{
+    display: block;
+  } 
+}
