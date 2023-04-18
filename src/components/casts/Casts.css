@@ -70,3 +70,12 @@
     color: #666;
   }
   
+  @media (max-width:480px) {
+    .cast-item{
+      width: 100% !important; 
+    }
+    .cast-img-container{
+      width: 45%;
+      height: 167px;
+    }
+  }

@@ -1,11 +1,12 @@
 .casts-box{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
 .casts-box .box{
-width: 32%;
+width: 30%;
 display: flex;
 flex-wrap: wrap;
 align-items: center;

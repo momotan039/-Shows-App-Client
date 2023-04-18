@@ -18,6 +18,12 @@
   margin: auto;
   padding: 20px 10px;
 }
+@media (max-width:600px) {
+  .container{
+    padding: 0;
+    padding-bottom: 20px;
+  }
+}
 .skelton{
   background: #6a6a6a;
   position: relative;

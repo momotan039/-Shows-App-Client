@@ -1,5 +1,4 @@
 .showcard-container {
-  /* Styles for the show card container */
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -87,4 +86,21 @@
 
 .showcard-delete-button:hover {
   background-color: #c00; /* Set desired background color on hover */
+}
+
+
+@media (max-width:992px) {
+  .showcard-container {
+    width: 32% !important;
+  }
+}
+
+@media (max-width:768px) {
+  .showcard-container {
+    width: 48% !important;
+  }
+  .shows-grid{
+    gap: 8px !important;
+    justify-content: start;
+  }
 }

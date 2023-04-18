@@ -31,3 +31,21 @@
 .shows-box .box .bottom .describition{
     height: 100%;
 }
+
+
+
+@media (max-width:992px) {
+    .shows-box .box {
+      width: 32% !important;
+    }
+  }
+  
+  @media (max-width:768px) {
+    .shows-box .box {
+      width: 48% !important;
+    }
+    .shows-box{
+      gap: 8px !important;
+      justify-content: start;
+    }
+  }
