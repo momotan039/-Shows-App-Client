@@ -1,5 +1,5 @@
 import { combineReducers, configureStore, createStore } from "@reduxjs/toolkit";
-import authReducer from "./reducers/authreducer";
+import authReducer from "./reducers/ff";
 import loaderReducer from "./reducers/loaderReducer";
 import  accountReducer  from "./reducers/accountReducer";
 import appReducer from "./reducers/appReducer";
