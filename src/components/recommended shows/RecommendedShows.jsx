@@ -10,19 +10,17 @@ function RecommendedShows({mediaType}) {
   const [shows, setShows] = useState(null);
   const dispatch = useDispatch();
   const [pages,setPages,loading,setLoading]=usePagination()
-  const _getRecommendedShows = (page) => {
+  const _getRecommendedShows = async (page) => {
       setShows(null)
       setLoading(true)
       if(pages)
       dispatch(scrollToTop('.recommended'))
     try {
-        setTimeout(async () => {
         const data = await getRecommendedShows(mediaType, page);
         setPages({ current: data.page, total: data.total_pages });
         setShows(data.results);
-        }, 1000);
       } catch (error) {
-        alert(error.response.data.message);
+        console.log(error.response.data.message);
       }
       setLoading(false)
    }
