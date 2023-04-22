@@ -1,3 +1,3 @@
 // export const API=process.env.REACT_APP_API
-export const API='https://shows-app.onrender.com'
+export const API='http://localhost:5000'
 //https://shows-app.onrender.com
