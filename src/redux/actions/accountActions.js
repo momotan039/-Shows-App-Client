@@ -1,10 +1,13 @@
 import { setupAccount } from "../../api/account";
 import { saveUserToStorage } from "../../utils/localStorage";
-import { showError } from "./appAction";
+import store from "../store";
+import { HidePopUp, showError, ShowPopUp } from "./appAction";
 
 export const editUserPreferences = async (prefs) => {
   try {
     const preferences = await setupAccount(prefs);
+    debugger
+    store.dispatch(ShowPopUp('User Preferences Edited Succesfully'))
     return {
       type: "Edit_User_Preferences",
       payload: preferences,

@@ -47,3 +47,16 @@ export const scrollToTop=(classElem)=>{
         type:'SCROLLING_TO_TOP'
       }
 }
+
+export const ShowPopUp=(message)=>{
+    return {
+        type:'SHOW_POPUP',
+        payload:message
+    }
+}
+
+export const HidePopUp=()=>{
+    return {
+        type:'HIDE_POPUP'
+    }
+}
