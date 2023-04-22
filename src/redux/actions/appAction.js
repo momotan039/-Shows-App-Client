@@ -1,7 +1,7 @@
 export const showError=(error)=>{
     return {
         type:'SHOW_ERROR',
-        payload:error.response.data.message
+        payload:error.response?.data.message
     }
 }
 
