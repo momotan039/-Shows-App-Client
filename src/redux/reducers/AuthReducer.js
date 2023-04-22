@@ -4,7 +4,7 @@ const initialState = {
     success:null
   };
 
-const authReducer=(state=initialState,action)=>{
+const authreducer=(state=initialState,action)=>{
     switch(action.type)
     {
         case 'SIGN_IN':
@@ -29,4 +29,4 @@ const authReducer=(state=initialState,action)=>{
 }
 
 
-export default authReducer
+export default authreducer
