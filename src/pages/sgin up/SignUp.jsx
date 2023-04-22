@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { hideError } from '../../redux/actions/appAction';
-import { signUp } from '../../redux/actions/authActions';
+import { signUp } from '../../redux/actions/_authActions';
 import { hideLoader, showLoader } from '../../redux/actions/loaderActions';
 import './SignUp.css'; 
 

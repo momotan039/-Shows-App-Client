@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './SignIn.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { signIn } from '../../redux/actions/authActions';
+import { signIn } from '../../redux/actions/_authActions';
 import { hideLoader, showLoader } from '../../redux/actions/loaderActions';
 import { hideError } from '../../redux/actions/appAction';
 

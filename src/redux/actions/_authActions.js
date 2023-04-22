@@ -16,6 +16,8 @@ export const signIn = async (credentials, dispatch) => {
     .then(async (data) => {
       saveUserToStorage(data.user);
       action.payload = data.user;
+      //save the token to cookies
+      document.cookie=`token=${data.token} domain=shows-app.onrender.com`
       dispatch(action);
       dispatch(setCurrentUser(data.user))
     })
