@@ -9,6 +9,7 @@ import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 import { setupAccount } from "../../api/account";
 import { editUserPreferences } from "../../redux/actions/accountActions";
 import { saveUserToStorage } from "../../utils/localStorage";
+import { languages } from "../../utils/constance";
 
 const animatedComponents = makeAnimated();
 const SetupProfile = () => {
@@ -54,73 +55,10 @@ saveUserToStorage(user)
       "show_lang":showLang,
       "genres":genres
   })
-     setTimeout(() => {
       dispatch(action)
       dispatch(hideLoader())
-     }, 1000);
   };
-const languages=[
-  {
-    "name": "English",
-    "subName": "en"
-  },
-  {
-    "name": "Spanish",
-    "subName": "es"
-  },
-  {
-    "name": "French",
-    "subName": "fr"
-  },
-  {
-    "name": "German",
-    "subName": "de"
-  },
-  {
-    "name": "Italian",
-    "subName": "it"
-  },
-  {
-    "name": "Chinese",
-    "subName": "zh"
-  },
-  {
-    "name": "Japanese",
-    "subName": "ja"
-  },
-  {
-    "name": "Korean",
-    "subName": "ko"
-  },
-  {
-    "name": "Russian",
-    "subName": "ru"
-  },
-  {
-    "name": "Portuguese",
-    "subName": "pt"
-  },
-  {
-    "name": "Arabic",
-    "subName": "ar"
-  },
-  {
-    "name": "Dutch",
-    "subName": "nl"
-  },
-  {
-    "name": "Hindi",
-    "subName": "hi"
-  },
-  {
-    "name": "Swedish",
-    "subName": "sv"
-  },
-  {
-    "name": "Turkish",
-    "subName": "tr"
-  }
-]
+
 
   return (
     <div className="center">
@@ -136,7 +74,7 @@ const languages=[
             <option value="">Select Show Language</option>
             {
               languages.map(v=>{
-                return <option value={v.subName}>{v.name}</option>
+                return <option key={v.name}  value={v.subName}>{v.name}</option>
               })
             }
           </select>
