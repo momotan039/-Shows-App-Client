@@ -20,7 +20,7 @@ const SetupProfile = () => {
     try {
       const data=await getAllGeneres()
       setAllGenres(data)
-    } catch (error) {
+    } catch (err) {
       alert(err.response.data.message)
     }
     dispatch(hideLoader())
@@ -59,6 +59,68 @@ saveUserToStorage(user)
       dispatch(hideLoader())
      }, 1000);
   };
+const languages=[
+  {
+    "name": "English",
+    "subName": "en"
+  },
+  {
+    "name": "Spanish",
+    "subName": "es"
+  },
+  {
+    "name": "French",
+    "subName": "fr"
+  },
+  {
+    "name": "German",
+    "subName": "de"
+  },
+  {
+    "name": "Italian",
+    "subName": "it"
+  },
+  {
+    "name": "Chinese",
+    "subName": "zh"
+  },
+  {
+    "name": "Japanese",
+    "subName": "ja"
+  },
+  {
+    "name": "Korean",
+    "subName": "ko"
+  },
+  {
+    "name": "Russian",
+    "subName": "ru"
+  },
+  {
+    "name": "Portuguese",
+    "subName": "pt"
+  },
+  {
+    "name": "Arabic",
+    "subName": "ar"
+  },
+  {
+    "name": "Dutch",
+    "subName": "nl"
+  },
+  {
+    "name": "Hindi",
+    "subName": "hi"
+  },
+  {
+    "name": "Swedish",
+    "subName": "sv"
+  },
+  {
+    "name": "Turkish",
+    "subName": "tr"
+  }
+]
 
   return (
     <div className="center">
@@ -72,9 +134,11 @@ saveUserToStorage(user)
             onChange={(e) => setShowLang(e.target.value)}
           >
             <option value="">Select Show Language</option>
-            <option value="en">English</option>
-            <option value="ar">Arabic</option>
-            <option value="he">Hebrew</option>
+            {
+              languages.map(v=>{
+                return <option value={v.subName}>{v.name}</option>
+              })
+            }
           </select>
           <div className="genres">
             <Select

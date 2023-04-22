@@ -9,7 +9,7 @@ function TrendingShows({mediaType}) {
       const data = await getTrendingShows(mediaType);
         setShows(data.results);
     } catch (error) {
-      alert(error.response.data.message);
+      console.log(error.response.data.message);
     }
   };
   useEffect(() => {
