@@ -1,5 +1,5 @@
 import { combineReducers, configureStore, createStore } from "@reduxjs/toolkit";
-import authReducer from "./reducers/authReducer.js";
+// import authReducer from "./reducers/authReducer.js";
 import loaderReducer from "./reducers/loaderReducer";
 import  accountReducer  from "./reducers/accountReducer";
 import appReducer from "./reducers/appReducer";
@@ -12,7 +12,7 @@ import showReducer from "./reducers/showReducer";
 // })
 const store = configureStore({
   reducer: {
-    auth: authReducer,
+    // auth: authReducer,
     loader:loaderReducer,
     account:accountReducer,
     app:appReducer,
