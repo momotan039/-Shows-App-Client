@@ -1,5 +1,6 @@
 import { appendShowToUserShows, removeShowFromUserShows } from "../../api/shows";
 import { addFavoriteShow, addViewedShow, addWatchLaterShow, removeFavoriteShow, removeViewedShow, removeWatchLaterShow } from "../../redux/actions/accountActions";
+import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 import store from "../../redux/store";
 
 export const findShowInUserShows = (user,list) => {
@@ -9,18 +10,20 @@ export const findShowInUserShows = (user,list) => {
 
  const toggle = async (state = {}, listApi, rmListShow, addListShow) => {
     const {show}=store.getState().show
-  try {
-    if (state.value) {
-      await removeShowFromUserShows(show.id, listApi);
-      store.dispatch(rmListShow(show.id));
-    } else {
-      await appendShowToUserShows(show, listApi);
-      store.dispatch(addListShow(show));
+    store.dispatch(showLoader())
+    try {
+      if (state.value) {
+        await removeShowFromUserShows(show.id, listApi);
+        store.dispatch(rmListShow(show.id));
+      } else {
+        await appendShowToUserShows(show, listApi);
+        store.dispatch(addListShow(show));
+      }
+      state.set(!state.value);
+    } catch (error) {
+      console.log(error);
     }
-    state.set(!state.value);
-  } catch (error) {
-    console.log(error);
-  }
+    store.dispatch(hideLoader())
 };
 export const toggleFavorite = async (favorite,state) => {
   toggle(
