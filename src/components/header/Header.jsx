@@ -3,7 +3,7 @@ import "./Header.css"; // Import CSS file for styling
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineLogout,AiOutlineMenuFold,AiOutlineClose } from "react-icons/ai";
-import { logout } from "../../redux/actions/authActions";
+import { logout } from "../../redux/actions/_authActions";
 
 const Header = () => {
   const dispatch = useDispatch();
