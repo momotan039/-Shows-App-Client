@@ -41,6 +41,7 @@ export const MyRouterProvider = () => {
     const userFinishSetup=createBrowserRouter([
       {
         path:'/',
+        element:<Root/>,
         children:[
           {
             path: "/",
