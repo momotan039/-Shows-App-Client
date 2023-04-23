@@ -11,7 +11,6 @@ export const signIn = async (credentials, dispatch) => {
     payload: null,
   };
 
-  dispatch(action);
   await _signIn(credentials)
     .then(async (data) => {
       saveUserToStorage(data.user);
