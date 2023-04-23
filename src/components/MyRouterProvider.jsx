@@ -28,7 +28,23 @@ export const MyRouterProvider = () => {
         children: [
           {
             path: "/",
-            element: <Home />,
+            element: <SetupProfile/>,
+          },
+          {
+            path: "*",
+            element: <NotFound />,
+          }
+        ],
+      },
+      
+    ]);
+    const userFinishSetup=createBrowserRouter([
+      {
+        path:'/',
+        children:[
+          {
+            path: "/",
+            element: <Home/>,
           },
           {
             path: "/dashborad",
@@ -47,17 +63,12 @@ export const MyRouterProvider = () => {
             element:<Show/>
           },
           {
-            path: "/404",
-            element:<Show/>
-          },
-          {
             path: "*",
             element: <NotFound />,
           }
-        ],
-      },
-      
-    ]);
+        ]
+      }
+    ])
     const withOutUser = createBrowserRouter([
       {
         path: "/",
@@ -79,7 +90,14 @@ export const MyRouterProvider = () => {
       },
       
     ]);
-    return user ? withUser : withOutUser;
+    
+    if(user && user.preferences)
+    return userFinishSetup
+
+    if(user)
+    return withUser
+    
+    return withOutUser;
   };
   return <RouterProvider router={generateRouter()} />;
 };

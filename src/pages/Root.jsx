@@ -7,13 +7,6 @@ import Popup from "../components/popup/Popup";
 import { useSelector } from "react-redux";
 
 function Root() {
-  const {user}=useSelector(s=>s.account)
-  const nav=useNavigate()
-  useEffect(()=>{
-    if(user&&!user.preferences)
-    nav('/setup-profile')
-  },[])
-
   return (
   <div className="root">
       <Header />
