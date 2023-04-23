@@ -31,6 +31,10 @@ export const MyRouterProvider = () => {
             element: <SetupProfile/>,
           },
           {
+            path: "/setup-profile",
+            element: <SetupProfile/>,
+          },
+          {
             path: "*",
             element: <NotFound />,
           }
