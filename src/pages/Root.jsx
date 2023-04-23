@@ -12,7 +12,7 @@ function Root() {
   useEffect(()=>{
     if(user&&!user.preferences)
     nav('/setup-profile')
-  },[user])
+  },[])
 
   return (
   <div className="root">
