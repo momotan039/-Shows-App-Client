@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RiCloseFill } from 'react-icons/ri'; // Import the close icon from React Icons library
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { HidePopUp } from '../../redux/actions/appAction';
+import { hidePopUp } from '../../redux/actions/appAction';
 import store from '../../redux/store';
 import './Popup.css'; // Import CSS file for styling
 
@@ -15,7 +15,7 @@ const Popup = () => {
   })
   
   const handleClose = () => {
-    store.dispatch(HidePopUp())
+    store.dispatch(hidePopUp())
   };
   
 
@@ -29,7 +29,9 @@ const Popup = () => {
             </button>
             <div className="popup-content">
               <h1 className='shows-title'>{popup.message}</h1>
-              <Link onClick={()=>dispatch(HidePopUp())} className='button-ok' to='/'>GO To Home</Link>
+              <Link onClick={()=>dispatch(hidePopUp())} className='button-ok' to={popup.buttonUrl}>
+                {popup.buttonTitle}
+              </Link>
             </div>
           </div>
         </div>
