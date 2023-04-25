@@ -2,6 +2,7 @@ import { appendShowToUserShows, removeShowFromUserShows } from "../../api/shows"
 import { addFavoriteShow, addViewedShow, addWatchLaterShow, removeFavoriteShow, removeViewedShow, removeWatchLaterShow } from "../../redux/actions/accountActions";
 import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
 import store from "../../redux/store";
+import { showExpiredSessionDialog } from "../../utils/dialogs";
 
 export const findShowInUserShows = (user,list) => {
     const {show}=store.getState().show
@@ -21,7 +22,7 @@ export const findShowInUserShows = (user,list) => {
       }
       state.set(!state.value);
     } catch (error) {
-      console.log(error);
+      showExpiredSessionDialog(error)
     }
     store.dispatch(hideLoader())
 };
