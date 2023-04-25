@@ -10,6 +10,7 @@ import { setupAccount } from "../../api/account";
 import { editUserPreferences } from "../../redux/actions/accountActions";
 import { saveUserToStorage } from "../../utils/localStorage";
 import { languages } from "../../utils/constance";
+import { showExpiredSessionDialog } from "../../utils/dialogs";
 
 const animatedComponents = makeAnimated();
 const SetupProfile = () => {
@@ -22,7 +23,7 @@ const SetupProfile = () => {
       const data=await getAllGeneres()
       setAllGenres(data)
     } catch (err) {
-      alert(err.response.data.message)
+      showExpiredSessionDialog(err)
     }
     dispatch(hideLoader())
   }
@@ -50,12 +51,16 @@ saveUserToStorage(user)
       return
     }
      dispatch(showLoader())
-     const action=await editUserPreferences({
-      "lang":'en',
-      "show_lang":showLang,
-      "genres":genres
-  })
-      dispatch(action)
+     try {
+      const action=await editUserPreferences({
+        "lang":'en',
+        "show_lang":showLang,
+        "genres":genres
+    })
+        dispatch(action)
+     } catch (error) {
+      showExpiredSessionDialog(error)
+     }
       dispatch(hideLoader())
   };
 

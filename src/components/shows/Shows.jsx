@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { removeShowFromUserShows } from "../../api/shows";
 import {
   removeFavoriteShow,
@@ -7,6 +8,7 @@ import {
   removeWatchLaterShow,
 } from "../../redux/actions/accountActions";
 import { hideLoader, showLoader } from "../../redux/actions/loaderActions";
+import { showExpiredSessionDialog } from "../../utils/dialogs";
 import EmptyResults from "../empty results/EmptyResults";
 import ShowCard from "../show card/ShowCard";
 import SkeltonShows from "../skelton shows/SkeltonShows";
@@ -14,6 +16,7 @@ import "./Shows.css";
 
 const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons,showNotFound}) => {
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   const deleteShow = async (id) => {
     return new Promise(async (res, rej) => {
       try {
@@ -37,7 +40,8 @@ const Shows = ({ title, shows, apiRoute, enableDelete, setShows,skeltons,showNot
           dispatch(hideLoader());
           res();
       } catch (error) {
-        console.log(error.response.data.message);
+        dispatch(showPopUp(error.response.data.message,'sgin in again..','/'))
+        showExpiredSessionDialog(error)
         rej();
       }
     });

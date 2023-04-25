@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Shows from "../shows/Shows";
 import { getTrendingShows } from "../../api/shows";
+import { useDispatch } from "react-redux";
+import { showPopUp } from "../../redux/actions/appAction";
+import { showExpiredSessionDialog } from "../../utils/dialogs";
+import { useNavigate } from "react-router-dom";
 
 function TrendingShows({mediaType}) {
   const [shows, setShows] = useState(null);
+  const navigate=useNavigate()
   const _getTrendingShows = async () => {
     try {
       const data = await getTrendingShows(mediaType);
         setShows(data.results);
     } catch (error) {
-      console.log(error.response.data.message);
+      showExpiredSessionDialog(error)
     }
   };
   useEffect(() => {

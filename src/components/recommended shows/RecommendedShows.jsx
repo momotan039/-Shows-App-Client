@@ -4,11 +4,14 @@ import { useDispatch } from "react-redux";
 import Shows from "../shows/Shows";
 import Pagination from "../pagination/Pagination";
 import usePagination from "../../hooks/usePagination";
-import { scrollToTop } from "../../redux/actions/appAction";
+import { scrollToTop, showPopUp } from "../../redux/actions/appAction";
+import { showExpiredSessionDialog } from "../../utils/dialogs";
+import { useNavigate } from "react-router-dom";
 
 function RecommendedShows({mediaType}) {
   const [shows, setShows] = useState(null);
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   const [pages,setPages,loading,setLoading]=usePagination()
   const _getRecommendedShows = async (page) => {
       setShows(null)
@@ -20,7 +23,8 @@ function RecommendedShows({mediaType}) {
         setPages({ current: data.page, total: data.total_pages });
         setShows(data.results);
       } catch (error) {
-        console.log(error.response.data.message);
+        dispatch(showPopUp(error.response.data.message,'sgin in again..','/'))
+        showExpiredSessionDialog(error)
       }
       setLoading(false)
    }
