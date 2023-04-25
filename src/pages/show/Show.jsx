@@ -3,10 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Show.css"; // Import CSS file for styling
 import { useNavigate } from "react-router-dom";
 import { FaClock, FaEye, FaHeart } from "react-icons/fa";
-import {
-  appendShowToUserShows,
-  removeShowFromUserShows,
-} from "../../api/shows";
 import { saveUserToStorage } from "../../utils/localStorage";
 import Casts from "../../components/casts/Casts";
 import { findShowInUserShows, toggleViewed, toggleWatchLater,toggleFavorite} from "./helperShow";
