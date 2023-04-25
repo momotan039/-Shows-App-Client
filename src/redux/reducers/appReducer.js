@@ -3,7 +3,9 @@ const initialState = {
     showScroller:true,
     popup:{
       isShow:false,
-      message:null
+      message:null,
+      buttonTitle:null,
+      buttonUrl:null
     }
 }
 
@@ -19,7 +21,7 @@ export default (state = initialState, { type, payload }) => {
   case 'HIDE_SCROLLER':
     return {...state,showScroller:false}
   case 'SHOW_POPUP':
-    return {...state,popup:{isShow:true,message:payload}}
+    return {...state,popup:{isShow:true,...payload}}
     case 'HIDE_POPUP':
     return {...state,popup:{...state.popup,isShow:false}}
   default:
