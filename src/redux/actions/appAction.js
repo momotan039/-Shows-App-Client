@@ -48,14 +48,14 @@ export const scrollToTop=(classElem)=>{
       }
 }
 
-export const ShowPopUp=(message)=>{
+export const showPopUp=(message,buttonTitle,buttonUrl)=>{
     return {
         type:'SHOW_POPUP',
-        payload:message
+        payload:{message,buttonTitle,buttonUrl}
     }
 }
 
-export const HidePopUp=()=>{
+export const hidePopUp=()=>{
     return {
         type:'HIDE_POPUP'
     }
