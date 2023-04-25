@@ -1,4 +1,5 @@
 export const API='https://shows-app.onrender.com'
+// export const API='http://localhost:5000'
 export const languages=[
     {
       "name": "English",
@@ -61,4 +62,3 @@ export const languages=[
       "subName": "tr"
     }
   ]
-//https://shows-app.onrender.com
