@@ -1,3 +1,4 @@
+import { createBrowserHistory } from "@remix-run/router";
 import { signIn as _signIn, signUp as _signUp } from "../../api/auth";
 import { getAllGeneres } from "../../api/shows";
 import { saveUserToStorage } from "../../utils/localStorage";
@@ -37,18 +38,15 @@ export const signUp = async (data, dispatch) => {
   }
 };
 
-export const logout = (dispatch, navigator) => {
+export const logout = (dispatch) => {
   return new Promise((res,rej) => {
-    navigator('/')
-    dispatch(showLoader())
     localStorage.removeItem("user");
     dispatch(setCurrentUser(null))
     dispatch({
       type: "LOGOUT",
     });
-    setTimeout(() => {
-      dispatch(hideLoader())
-      res()
-    }, 1000);
+    const history=createBrowserHistory()
+      history.push('/')
+    res()
   });
 };
