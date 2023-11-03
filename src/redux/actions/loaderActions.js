@@ -11,3 +11,10 @@ export const hideLoader=()=>{
          payload:false
     } 
  }
+
+ export const firstTimeLoader=()=>{
+     return{
+          type:'FIRST_TIME',
+          payload:true
+     } 
+  }

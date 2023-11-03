@@ -104,3 +104,10 @@
     justify-content: start;
   }
 }
+
+
+@media (max-width:480px) {
+  .showcard-container {
+    width: 100% !important;
+  }
+}
