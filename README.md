@@ -41,6 +41,8 @@ my-movie-app/
 │ ├── utils/
 │ │ ├── ... (Utils files)
 
+## 🌐 Live Client
+You can access the live client application at Your Live Client URL to explore and discover movies and TV shows.
 
 ## 🙌 Get Involved
 
